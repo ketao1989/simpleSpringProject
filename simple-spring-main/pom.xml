@@ -69,10 +69,10 @@
 
         <resources>
             <resource>
-                <directory>${profiles.dir}.${deploy.type}</directory>
+                <directory>src/main/resources.${deploy.type}</directory>
             </resource>
             <resource>
-                <directory>src/main/resources.${deploy.type}</directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
 
