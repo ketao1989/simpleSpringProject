@@ -172,22 +172,6 @@
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty-maven-plugin.version}</version>
-                <!--<dependencies>-->
-                <!--<dependency>-->
-                <!--<groupId>ch.qos.logback</groupId>-->
-                <!--<artifactId>logback-access</artifactId>-->
-                <!--<version>${logback-access.version}</version>-->
-                <!--</dependency>-->
-                <!--</dependencies>-->
-
-                <configuration>
-                    <scanIntervalSeconds>6</scanIntervalSeconds>
-                    <requestLog implementation="ch.qos.logback.access.jetty.RequestLogImpl">
-                        <fileName>
-                            server/conf/logback-access.xml
-                        </fileName>
-                    </requestLog>
-                </configuration>
             </plugin>
         </plugins>
     </build>
