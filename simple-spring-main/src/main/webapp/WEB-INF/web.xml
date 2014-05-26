@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
+    <!--启动配置文件设置-->
     <display-name>simple-spring-main</display-name>
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -14,7 +15,7 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- filter -->
+    <!-- 请求地址匹配映射 -->
 
     <servlet>
         <servlet-name>springmvc</servlet-name>
@@ -34,7 +35,7 @@
         <url-pattern>*.xml</url-pattern>
     </servlet-mapping>
 
-    <!-- Character -->
+    <!-- 编码过滤器 -->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
