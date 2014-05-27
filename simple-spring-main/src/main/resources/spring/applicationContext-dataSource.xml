@@ -38,10 +38,17 @@
     
 
     <!-- 创建SqlSessionFactory -->
+    <!--<bean id="sqlSessionFactory" name="sqlSessionFactory"-->
+          <!--class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml" />-->
+    <!--</bean>-->
+
+    <!--Mybatis可以将Mapper自动配置成Bean-->
     <bean id="sqlSessionFactory" name="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath*:mapper/*.xml" />
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
