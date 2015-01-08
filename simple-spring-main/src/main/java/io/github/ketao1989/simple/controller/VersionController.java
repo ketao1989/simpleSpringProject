@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import io.github.ketao1989.model.Version;
 import io.github.ketao1989.support.ApiResult;
 
+import java.util.List;
+import java.util.Objects;
+
 /**
  * @author: tao.ke Date: 14-5-23 Time: 上午10:52
  * @version: \$Id$
@@ -31,14 +34,16 @@ public class VersionController {
 
     @RequestMapping("query")
     @ResponseBody
-    public ApiResult<Version> query(@RequestParam(value = "id", defaultValue = "0", required = false) int id) {
+    public ApiResult<Object> query(@RequestParam(value = "id", defaultValue = "0", required = false) int id) {
 
-        ApiResult<Version> apiResult = new ApiResult<Version>();
+        ApiResult<Object> apiResult = new ApiResult<Object>();
         if (id == 0) {
             logger.warn("请求版本信息的id未指定！");
             apiResult.setCode(-1);
             apiResult.setRet(false);
             apiResult.setErrmsg("版本id 没有指定！");
+            List<Version> version = versionBizImpl.queryAllVersions();
+            apiResult.setData(version);
             return apiResult;
 
         } else {

@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans default-autowire="byName"
        xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
-		
-    <mvc:annotation-driven />
 
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop">
+
+    <mvc:annotation-driven/>
+
+    <!-- 配置数据库注解aop -->
+    <aop:aspectj-autoproxy/>
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-    
+
     <bean id="exceptionHandler" class="io.github.ketao1989.support.ExceptionHandler"/>
+
+    <bean id="dataSourceAspect" class="io.github.ketao1989.simple.service.dataSource.DataSourceAspect"/>
+    <aop:config>
+        <aop:aspect id="dsa" ref="dataSourceAspect">
+            <aop:pointcut id="pc" expression="execution(* io.github.ketao1989.dao.*.*(..))"/>
+            <aop:before pointcut-ref="pc" method="before"/>
+            <aop:after pointcut-ref="pc" method="after"/>
+        </aop:aspect>
+    </aop:config>
+    <!-- 配置数据库注解aop -->
 
     <!-- Default View Resolver -->
     <bean id="beanNameViewResolver"
           class="org.springframework.web.servlet.view.BeanNameViewResolver">
-        <property name="order" value="0" />
+        <property name="order" value="0"/>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="/WEB-INF/views/" />
+        <property name="resourceLoaderPath" value="/WEB-INF/views/"/>
         <property name="velocityProperties">
             <props>
                 <prop key="input.encoding">UTF-8</prop>
@@ -32,14 +44,14 @@
     </bean>
 
     <bean class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-        <property name="cache" value="true" />
-        <property name="suffix" value=".vm" />
-        <property name="contentType" value="text/html;charset=utf-8" />
-        <property name="layoutUrl" value="_layout/layout.vm" />
-        <property name="exposeSpringMacroHelpers" value="true" />
-        <property name="exposeRequestAttributes" value="true" />
+        <property name="cache" value="true"/>
+        <property name="suffix" value=".vm"/>
+        <property name="contentType" value="text/html;charset=utf-8"/>
+        <property name="layoutUrl" value="_layout/layout.vm"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeRequestAttributes" value="true"/>
         <property name="exposeSessionAttributes" value="true"/>
-        <property name="requestContextAttribute" value="rc" />
+        <property name="requestContextAttribute" value="rc"/>
         <!--<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml" />-->
     </bean>
 
@@ -48,8 +60,8 @@
         <property name="encoding">
             <value type="org.codehaus.jackson.JsonEncoding">UTF8</value>
         </property>
-        <property name="contentType" value="application/json;charset=UTF-8" />
-        <property name="extractValueFromSingleKeyModel" value="true" />
+        <property name="contentType" value="application/json;charset=UTF-8"/>
+        <property name="extractValueFromSingleKeyModel" value="true"/>
     </bean>
     <bean id="jacksonObjectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
 
@@ -74,7 +86,7 @@
             </list>
         </property>
     </bean>
-     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
 
 </beans>

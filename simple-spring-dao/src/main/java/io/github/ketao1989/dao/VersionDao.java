@@ -3,6 +3,7 @@
  */
 package io.github.ketao1989.dao;
 
+import io.github.ketao1989.common.DBSource;
 import io.github.ketao1989.model.Version;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,6 +21,7 @@ public interface VersionDao {
      * @param id
      * @return
      */
+    @DBSource("masterDataSource")
     Version queryVersionById(@Param("id") int id);
 
     /**
@@ -27,6 +29,7 @@ public interface VersionDao {
      * 
      * @return
      */
+    @DBSource("slaveDataSource")
     List<Version> queryAllVersions();
 
 }

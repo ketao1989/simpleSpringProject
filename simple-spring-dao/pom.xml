@@ -14,6 +14,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.github.ketao1989</groupId>
+            <artifactId>simple-spring-common</artifactId>
+        </dependency>
         <!--依赖包-->
         <dependency>
             <groupId>${project.groupId}</groupId>
