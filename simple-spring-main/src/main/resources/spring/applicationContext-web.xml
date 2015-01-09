@@ -16,16 +16,6 @@
 
     <bean id="exceptionHandler" class="io.github.ketao1989.support.ExceptionHandler"/>
 
-    <bean id="dataSourceAspect" class="io.github.ketao1989.simple.service.dataSource.DataSourceAspect"/>
-    <aop:config>
-        <aop:aspect id="dsa" ref="dataSourceAspect">
-            <aop:pointcut id="pc" expression="execution(* io.github.ketao1989.dao.*.*(..))"/>
-            <aop:before pointcut-ref="pc" method="before"/>
-            <aop:after pointcut-ref="pc" method="after"/>
-        </aop:aspect>
-    </aop:config>
-    <!-- 配置数据库注解aop -->
-
     <!-- Default View Resolver -->
     <bean id="beanNameViewResolver"
           class="org.springframework.web.servlet.view.BeanNameViewResolver">

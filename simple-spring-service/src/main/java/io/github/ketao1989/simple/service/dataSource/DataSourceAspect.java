@@ -52,7 +52,7 @@ public class DataSourceAspect {
             Method m = classz[0].getMethod(method, parameterTypes);
             if (m != null && m.isAnnotationPresent(DBSource.class)) {
                 DynamicDataSourceHolder.clear();
-
+                logger.info("-------清除ThreadLocal------");
             }
 
         } catch (Exception e) {

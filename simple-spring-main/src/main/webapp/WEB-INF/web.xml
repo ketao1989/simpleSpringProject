@@ -30,10 +30,6 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
-        <url-pattern>*.xml</url-pattern>
-    </servlet-mapping>
 
     <!-- 编码过滤器 -->
     <filter>
@@ -51,6 +47,10 @@
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>*.json</url-pattern>
     </filter-mapping>
 
     <error-page>

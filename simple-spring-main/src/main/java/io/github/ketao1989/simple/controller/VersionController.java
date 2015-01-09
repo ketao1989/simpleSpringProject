@@ -17,7 +17,6 @@ import io.github.ketao1989.model.Version;
 import io.github.ketao1989.support.ApiResult;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author: tao.ke Date: 14-5-23 Time: 上午10:52
@@ -32,9 +31,9 @@ public class VersionController {
     @Resource
     private VersionBiz versionBizImpl;
 
-    @RequestMapping("query")
+    @RequestMapping("query.json")
     @ResponseBody
-    public ApiResult<Object> query(@RequestParam(value = "id", defaultValue = "0", required = false) int id) {
+    public ApiResult query(@RequestParam(value = "id", defaultValue = "0", required = false) int id) {
 
         ApiResult<Object> apiResult = new ApiResult<Object>();
         if (id == 0) {

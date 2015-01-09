@@ -21,7 +21,7 @@ public interface VersionDao {
      * @param id
      * @return
      */
-    @DBSource("masterDataSource")
+    @DBSource("master")
     Version queryVersionById(@Param("id") int id);
 
     /**
@@ -29,7 +29,7 @@ public interface VersionDao {
      * 
      * @return
      */
-    @DBSource("slaveDataSource")
+    @DBSource("slave")
     List<Version> queryAllVersions();
 
 }

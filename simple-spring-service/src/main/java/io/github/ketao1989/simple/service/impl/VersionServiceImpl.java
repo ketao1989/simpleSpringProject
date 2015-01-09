@@ -29,11 +29,13 @@ public class VersionServiceImpl implements VersionService {
 
     @Override
     public Version queryVersionById(int id) {
+        logger.info("queryVersionById:{}",id);
         return versionDao.queryVersionById(id);
     }
 
     @Override
     public List<Version> queryAllVersions() {
+        logger.info("queryAllVersions");
         return versionDao.queryAllVersions();
     }
 

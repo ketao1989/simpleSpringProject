@@ -5,12 +5,12 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <description>Spring common config</description>
 
     <context:component-scan base-package="io.github.ketao1989"/>
+
 
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -21,6 +21,18 @@
             </list>
         </property>
     </bean>
+
+    <!-- 配置数据库注解aop -->
+    <aop:aspectj-autoproxy/>
+    <!-- 配置数据库注解aop -->
+    <bean id="dataSourceAspect" class="io.github.ketao1989.simple.service.dataSource.DataSourceAspect"/>
+    <aop:config>
+        <aop:aspect id="dsa" ref="dataSourceAspect">
+            <aop:pointcut id="pc" expression="execution(* io.github.ketao1989.dao.*.*(..))"/>
+            <aop:before pointcut-ref="pc" method="before"/>
+            <aop:after pointcut-ref="pc" method="after"/>
+        </aop:aspect>
+    </aop:config>
 
     <!-- spring -->
     <import resource="spring/applicationContext-dataSource.xml"/>
