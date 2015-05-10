@@ -31,6 +31,6 @@ public class ExceptionHandler implements HandlerExceptionResolver,Ordered {
 
     @Override
     public int getOrder() {
-        return 0;
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
