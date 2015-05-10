@@ -35,8 +35,6 @@
 ###############
 #  fixed file #
 ###############
-.gitignore
-*.iml
 *.exe
 *.txt
 *.def
@@ -52,17 +50,49 @@
 *.o
 *.plg
 *.keep
-
-
 ###############
 #  temp file  #
 ###############
 ~*
-*.log
 *.cmm
 *.men
 *.ini
 *.fig
 *.cmp
+
+# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+logs/
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.ver
+*.diff
+*.patch
 *.tmp
 
+# system ignore
+.DS_Store
+Thumbs.db
+
+# package ignore (optional)
+# *.jar
+# *.war
+# *.zip
+# *.tar
+# *.tar.gz
