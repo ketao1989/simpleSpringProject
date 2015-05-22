@@ -4,6 +4,7 @@
 package io.github.ketao1989.simple.service;
 
 import io.github.ketao1989.model.Version;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -34,5 +35,8 @@ public interface VersionService {
      * @return
      */
     List<Integer> queryAllVersionIds();
+
+
+    int UpdateVersionDesc(int id , String desc);
 
 }

@@ -6,6 +6,7 @@ package io.github.ketao1989.dao;
 import io.github.ketao1989.common.DBSource;
 import io.github.ketao1989.model.Version;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -30,6 +31,15 @@ public interface VersionDao {
      * @return
      */
     @DBSource("slave")
-    List<Version> queryAllVersions();
+    List<Version> queryAllVersions(RowBounds rowBounds);
+
+    /**
+     * 更新id的描述字段
+     * 
+     * @param id
+     * @param description
+     * @return
+     */
+    int updateVersion(@Param("id") int id, @Param("description") String description);
 
 }

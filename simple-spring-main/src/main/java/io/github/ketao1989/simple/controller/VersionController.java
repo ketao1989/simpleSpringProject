@@ -55,4 +55,10 @@ public class VersionController {
         }
     }
 
+    @RequestMapping("updateDesc.json")
+    @ResponseBody
+    public ApiResult updateDesc(@RequestParam(value = "id", defaultValue = "0", required = false) int id,@RequestParam(value = "desc")String desc){
+        versionBizImpl.UpdateVersionDesc(id,desc);
+        return new ApiResult();
+    }
 }

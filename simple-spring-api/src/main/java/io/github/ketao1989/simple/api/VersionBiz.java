@@ -23,4 +23,6 @@ public interface VersionBiz {
      */
     List<Version> queryAllVersions();
 
+    int UpdateVersionDesc(int id , String desc);
+
 }

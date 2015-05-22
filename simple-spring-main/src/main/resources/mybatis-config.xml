@@ -27,10 +27,9 @@
         <setting name="defaultStatementTimeout" value="600"/>
     </settings>
 
-
-
-    <mappers>
-        <mapper resource="mapper/version.xml"/>
-    </mappers>
+    <plugins>
+        <plugin interceptor="io.github.ketao1989.dao.plugins.NoConditionModifyInterceptor">
+        </plugin>
+    </plugins>
 
 </configuration>
