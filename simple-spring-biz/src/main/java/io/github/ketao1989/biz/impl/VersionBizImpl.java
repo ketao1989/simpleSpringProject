@@ -24,7 +24,6 @@ public class VersionBizImpl implements VersionBiz {
     @Resource
     private VersionService versionServiceImpl;
 
-    @Override
     public Version queryVersionById(int id) {
         // 业务相关的组合，调用service层
 
@@ -38,9 +37,13 @@ public class VersionBizImpl implements VersionBiz {
 
     }
 
-    @Override
     public List<Version> queryAllVersions() {
         return versionServiceImpl.queryAllVersions();
     }
+
+    public int UpdateVersionDesc(int id, String desc) {
+        return versionServiceImpl.UpdateVersionDesc(id,desc);
+    }
+
 
 }

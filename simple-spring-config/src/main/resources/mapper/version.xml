@@ -36,4 +36,17 @@
           select id,version_num,description,update_time
           from version
     </select>
+
+    <update id="updateVersion">
+        update version
+        <set>
+            description = #{description}
+        </set>
+        <where>
+            <if test="id != null  and id >0">
+                id = #{id}
+            </if>
+        </where>
+
+    </update>
 </mapper>

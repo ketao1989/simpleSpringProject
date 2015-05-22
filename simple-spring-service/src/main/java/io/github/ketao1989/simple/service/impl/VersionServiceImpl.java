@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import io.github.ketao1989.model.Version;
 import io.github.ketao1989.simple.service.VersionService;
 import io.github.ketao1989.dao.VersionDao;
+import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -27,26 +28,30 @@ public class VersionServiceImpl implements VersionService {
     @Resource
     private VersionDao versionDao;
 
-    @Override
+
     public Version queryVersionById(int id) {
         logger.info("queryVersionById:{}",id);
         return versionDao.queryVersionById(id);
     }
 
-    @Override
+
     public List<Version> queryAllVersions() {
         logger.info("queryAllVersions");
-        return versionDao.queryAllVersions();
+        return versionDao.queryAllVersions(new RowBounds(1,1));
     }
 
-    @Override
+
     public List<Integer> queryAllVersionIds() {
         List<Version> versions = queryAllVersions();
         return Lists.transform(versions, new Function<Version, Integer>() {
-            @Override
             public Integer apply(Version input) {
                 return input.getId();
             }
         });
+    }
+
+    public int UpdateVersionDesc(int id , String desc){
+
+        return versionDao.updateVersion(id,desc);
     }
 }
