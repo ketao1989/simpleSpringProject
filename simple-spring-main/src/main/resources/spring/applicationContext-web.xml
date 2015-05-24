@@ -12,6 +12,7 @@
 
     <!-- 配置数据库注解aop -->
     <aop:aspectj-autoproxy/>
+
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
     <bean id="exceptionHandler" class="io.github.ketao1989.support.ExceptionHandler"/>
