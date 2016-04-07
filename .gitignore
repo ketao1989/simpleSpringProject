@@ -64,7 +64,6 @@ logs/
 **/metadata/
 .metadata/
 **/logs/
-logs/
 /.idea/
 # temp ignore
 *.log
