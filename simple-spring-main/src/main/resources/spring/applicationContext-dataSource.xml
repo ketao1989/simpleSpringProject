@@ -3,11 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/context/spring-context-4.1.xsd
        http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+       http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
     <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
@@ -49,7 +49,7 @@
         </property>
     </bean>
 
-    <bean id="dataSource" class="io.github.ketao1989.simple.service.dataSource.DynamicDataSource">
+    <bean id="dataSource" class="com.taocoder.spring.service.dataSource.DynamicDataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <!-- write -->

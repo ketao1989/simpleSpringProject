@@ -28,7 +28,7 @@
     </settings>
 
     <plugins>
-        <plugin interceptor="io.github.ketao1989.dao.plugins.NoConditionModifyInterceptor">
+        <plugin interceptor="com.taocoder.spring.dao.plugins.NoConditionModifyInterceptor">
         </plugin>
     </plugins>
 

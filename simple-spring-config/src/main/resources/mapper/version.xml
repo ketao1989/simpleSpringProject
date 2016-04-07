@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.github.ketao1989.dao.VersionDao">
-    <resultMap id="VersionMap" type="io.github.ketao1989.model.Version">
+<mapper namespace="com.taocoder.spring.dao.VersionDao">
+    <resultMap id="VersionMap" type="com.taocoder.spring.model.Version">
         <id column="id" property="id"/>
         <result column="id" property="id"/>
         <result column="version_num" property="versionNum"/>

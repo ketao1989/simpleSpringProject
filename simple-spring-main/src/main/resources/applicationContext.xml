@@ -9,7 +9,7 @@
 
     <description>Spring common config</description>
 
-    <context:component-scan base-package="io.github.ketao1989"/>
+    <context:component-scan base-package="com.taocoder.spring"/>
 
 
     <bean id="propertyConfigurer"
@@ -25,10 +25,10 @@
     <!-- 配置数据库注解aop -->
     <aop:aspectj-autoproxy/>
     <!-- 配置数据库注解aop -->
-    <bean id="dataSourceAspect" class="io.github.ketao1989.simple.service.dataSource.DataSourceAspect"/>
+    <bean id="dataSourceAspect" class="com.taocoder.spring.service.dataSource.DataSourceAspect"/>
     <aop:config>
         <aop:aspect id="dsa" ref="dataSourceAspect">
-            <aop:pointcut id="pc" expression="execution(* io.github.ketao1989.dao.*.*(..))"/>
+            <aop:pointcut id="pc" expression="execution(* com.taocoder.spring.dao.*.*(..))"/>
             <aop:before pointcut-ref="pc" method="before"/>
             <aop:after pointcut-ref="pc" method="after"/>
         </aop:aspect>

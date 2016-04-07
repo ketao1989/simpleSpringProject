@@ -4,31 +4,7 @@
 #    folder   #
 ###############
 /target/
-/classes/
-/_souceInsight_/
-/build/
-/MoDIS/
-/Doc/
-/mtk_lib/
-/scripts/
-/header_temp/
-/tools/AudioResGen/
-/tools/GLBOptionSwtichRef/
-/tools/GMSL/
-/tools/MinGW/
-/tools/MSYS/
-/tools/NewMMIResourceTool/
-/tools/NVRAMStatistic/
-/tst/
-/verno/
-/plutommi/tool/
-/plutommi/Customer/ResGenerator/
-/plutommi/Customer/CustResource/
-/plutommi/Customer/LcdResource/
-/plutommi/Customer/Images/
-/plutommi/mmi/Framework/EventHandling/EventsInc/mmi_menu_handlers.h
-/vendor/font/MTK/official/project/plutommi/content/inc/
-/vendor/font/MTK/official/project/plutommi/content/src/
+
 
 
 
@@ -77,7 +53,19 @@ logs/
 *.ipr
 *.iml
 *.iws
-
+**/.DS_Store
+**/out/
+**/.idea/
+**/.classpath
+**/.project
+**/target/
+**/.settings/
+**/coverage-report/
+**/metadata/
+.metadata/
+**/logs/
+logs/
+/.idea/
 # temp ignore
 *.log
 *.cache
