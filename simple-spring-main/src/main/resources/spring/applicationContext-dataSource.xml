@@ -82,4 +82,12 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
+    <bean id="transactionFactoryBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>

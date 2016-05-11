@@ -8,6 +8,8 @@ import com.taocoder.spring.model.Version;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ public interface VersionDao {
      * @return
      */
     @DBSource("master")
+    @Transactional(propagation= Propagation.REQUIRED)
     Version queryVersionById(@Param("id") int id);
 
     /**
