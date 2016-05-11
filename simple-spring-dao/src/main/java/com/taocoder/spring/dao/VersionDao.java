@@ -26,7 +26,6 @@ public interface VersionDao {
      * @return
      */
     @DBSource("master")
-    @Transactional(propagation= Propagation.REQUIRED)
     Version queryVersionById(@Param("id") int id);
 
     /**
@@ -44,6 +43,7 @@ public interface VersionDao {
      * @param description
      * @return
      */
+    @Transactional(propagation= Propagation.REQUIRED)
     int updateVersion(@Param("id") int id, @Param("description") String description);
 
 }
