@@ -17,6 +17,12 @@
 
     <bean id="exceptionHandler" class="com.taocoder.spring.controller.support.ExceptionHandler"/>
 
+    <mvc:interceptors>
+            <bean class="com.taocoder.spring.controller.support.GlobalHandlerInterceptor"/>
+    </mvc:interceptors>
+
+
+
     <!-- Default View Resolver -->
     <bean id="beanNameViewResolver"
           class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -70,7 +76,7 @@
                         </list>
                     </property>
                 </bean>
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <bean class="com.taocoder.spring.controller.support.GlobalJsonMessageConverter">
                     <property name="supportedMediaTypes">
                         <list>
                             <value>application/json;charset=UTF-8</value>
@@ -80,9 +86,12 @@
                 </bean>
             </list>
         </property>
+        <property name="order" value="-1"/>
     </bean>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
+
+
 
 </beans>

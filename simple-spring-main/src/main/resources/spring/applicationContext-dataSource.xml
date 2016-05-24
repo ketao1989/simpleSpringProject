@@ -78,16 +78,16 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="io.github.ketao1989.dao" />
+        <property name="basePackage" value="com.taocoder.spring.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
-    <bean id="transactionFactoryBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionAttributes">
-            <props>
-                <prop key="update*">PROPAGATION_REQUIRED</prop>
-            </props>
-        </property>
-    </bean>
+    <!--<bean id="transactionFactoryBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">-->
+        <!--<property name="transactionAttributes">-->
+            <!--<props>-->
+                <!--<prop key="update*">PROPAGATION_REQUIRED</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

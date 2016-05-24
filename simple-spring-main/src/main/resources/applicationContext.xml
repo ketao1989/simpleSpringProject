@@ -34,6 +34,12 @@
         </aop:aspect>
     </aop:config>
 
+    <bean id="controllerLogInterceptor" class="com.taocoder.spring.controller.support.ControllerLogInterceptor"/>
+
+    <aop:config>
+            <aop:pointcut id="clog" expression="execution(* com.taocoder.spring.controller.*.*(..))"/>
+            <aop:advisor advice-ref="controllerLogInterceptor" pointcut-ref="clog"/>
+    </aop:config>
     <!-- spring -->
     <import resource="spring/applicationContext-dataSource.xml"/>
     <import resource="spring/applicationContext-web.xml"/>
