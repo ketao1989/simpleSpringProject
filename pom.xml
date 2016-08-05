@@ -67,6 +67,12 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${org.springframework.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -156,11 +162,7 @@
                 <artifactId>velocity</artifactId>
                 <version>1.7</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity-tools</artifactId>
-                <version>2.0</version>
-            </dependency>
+
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
@@ -305,6 +307,39 @@
     </dependencies>
 
     <build>
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>default-cli</id>
+                <phase>validate</phase>
+                <goals>
+                    <goal>enforce</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <rules>
+                <bannedDependencies>
+                    <searchTransitive>true</searchTransitive>
+                    <excludes>
+                        <exclude>commons-logging</exclude>
+                        <exclude>org.slf4j:*:(,1.6)</exclude>
+                    </excludes>
+                </bannedDependencies>
+
+                <evaluateBeanshell>
+                    <condition>print("[INFO] [Maven Check Enforcer Rules] super-pom ");1==1</condition>
+                </evaluateBeanshell>
+
+                <DependencyConvergence/>
+            </rules>
+        </configuration>
+    </plugin>
+</plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -325,6 +360,12 @@
                             <exclude>**/*.xml</exclude>
                         </excludes>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
                 </plugin>
 
                 <plugin>
